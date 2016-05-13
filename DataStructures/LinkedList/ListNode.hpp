@@ -10,6 +10,9 @@ public:
 	Type getData() const;
 	ListNode<Type>* getNext();
 
+	void setNext(ListNode<Type>* next);
+	void setData(Type data);
+
 private:
 	ListNode<Type>* m_next;
 	Type m_data;

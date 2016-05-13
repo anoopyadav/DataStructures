@@ -22,3 +22,15 @@ ListNode<Type>* ListNode<Type>::getNext()
 {
 	return m_next;
 }
+
+template <class Type>
+void ListNode<Type>::setNext(ListNode<Type>* next)
+{
+	m_next = next;
+}
+
+template <class Type>
+void ListNode<Type>::setData(Type data)
+{
+	m_data = data;
+}

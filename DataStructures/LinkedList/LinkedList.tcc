@@ -13,6 +13,12 @@ LinkedList<Type>::LinkedList()
 template <class Type>
 LinkedList<Type>::~LinkedList()
 {
+	while(nullptr != m_head)
+	{
+		ListNode<Type>* current = m_head;
+		m_head = m_head->getNext();
+		delete current;
+	}
 }
 
 template <class Type>
@@ -39,9 +45,12 @@ void LinkedList<Type>::insertInFront(Type item)
 template <class Type>
 void LinkedList<Type>::removeFirst()
 {
-	LinkedList<Type>* node = m_head;
-	m_head = m_head->getNext();
-	delete node;
+	if(nullptr != m_head)
+	{
+		LinkedList<Type>* node = m_head;
+		m_head = m_head->getNext();
+		delete node;
+	}
 }
 
 template <class Type>
@@ -53,6 +62,21 @@ ListNode<Type>* LinkedList<Type>::getFirst()
 template <class Type>
 void LinkedList<Type>::reverse()
 {
+	// Create a new temporary head
+	ListNode<Type>* newHead = nullptr;
+	// Loop through the original list
+	while(nullptr != m_head)
+	{
+		// Take the current element, starting at head
+		ListNode<Type>* current = m_head;
+		// Move the original list forward
+		m_head = m_head->getNext();
+		// Insert the current node in new list
+		current->setNext(newHead);
+		// Set the head of new List
+		newHead = current;
+	}
+	m_head = newHead;
 	
 }
 
