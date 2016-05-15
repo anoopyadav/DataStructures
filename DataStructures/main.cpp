@@ -1,6 +1,8 @@
 #include "LinkedList/LinkedListMain.hpp"
+#include "BinarySearch/BinarySearchMain.hpp"
 int main(int argc, char** argv)
 {
-	LinkedListMain();
+	//LinkedListMain();
+	BinarySearchMain();
 	return 0;
 }
