@@ -20,7 +20,7 @@ BinarySearchTree<Type>::~BinarySearchTree()
 template <class Type>
 void BinarySearchTree<Type>::insert(Type data)
 {
-	insert(m_root, data);
+	m_root = insert(m_root, data);
 }
 
 template <class Type>
@@ -28,24 +28,27 @@ TreeNode<Type>* BinarySearchTree<Type>::insert(TreeNode<Type>* root, Type item)
 {
 	if(nullptr == root)
 	{
-		root =  new TreeNode<Type>(item);
-	}
-	else if(root->getData() > item)
-	{
-		root->setLeftChild(insert(root->getLeftChild(), item));
+		return new TreeNode<Type>(item);
 	}
 	else
 	{
-		root->setRightChild(insert(root->getRightChild(), item));
-	}
+		if(root->getData() > item)
+		{
+			root->setLeftChild(insert(root->getLeftChild(), item));
+		}
+		else
+		{
+			root->setRightChild(insert(root->getRightChild(), item));
+		}
 
-	return nullptr;
+		return root;
+	}
 }
 
 template <class Type>
 void BinarySearchTree<Type>::printElementsInOrder() const
 {
-	cout << "[";
+	cout << "[ ";
 	printElementsInOrder(m_root);
 	cout << "]";
 }
@@ -59,7 +62,7 @@ void BinarySearchTree<Type>::printElementsInOrder(TreeNode<Type>* root) const
 	}
 
 	printElementsInOrder(root->getLeftChild());
-	cout << root->getData() << ", ";
+	cout << root->getData() << " ";
 	printElementsInOrder(root->getRightChild());
 
 }
