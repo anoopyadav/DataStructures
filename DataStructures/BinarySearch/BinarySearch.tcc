@@ -1,4 +1,5 @@
 #include "BinarySearch.hpp"
+#include <algorithm>
 
 using std::vector;
 
