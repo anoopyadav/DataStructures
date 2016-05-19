@@ -11,7 +11,14 @@ int SearchTreeMain()
 	tree.insert(3);
 	tree.insert(5);
 
+	cout << "Elements Preorder:" << std::endl;
+	tree.printElementsPreorder();
+
+	cout << std::endl << "Elements InOrder:" << std::endl;
 	tree.printElementsInOrder();
+
+	cout << std::endl << "Elements LevelOrder:" << std::endl;
+	tree.printElementsLevelOrder();
 
 	return 0;
 }

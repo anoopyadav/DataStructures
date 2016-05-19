@@ -67,3 +67,44 @@ void BinarySearchTree<Type>::printElementsInOrder(TreeNode<Type>* root) const
 
 }
 
+template <class Type>
+void BinarySearchTree<Type>::printElementsLevelOrder() const
+{
+	cout << "[ ";
+	printElementsLevelOrder(m_root);
+	cout << "]";
+}
+
+template <class Type>
+void BinarySearchTree<Type>::printElementsLevelOrder(TreeNode<Type>* root) const
+{
+	if(nullptr == root)
+	{
+		return;
+	}
+
+	printElementsLevelOrder(root->getLeftChild());
+	printElementsLevelOrder(root->getRightChild());
+	cout << root->getData() << " ";
+}
+
+template <class Type>
+void BinarySearchTree<Type>::printElementsPreorder() const
+{
+	cout << "[ ";
+	printElementsPreorder(m_root);
+	cout << "]";
+}
+
+template <class Type>
+void BinarySearchTree<Type>::printElementsPreorder(TreeNode<Type>* root) const
+{
+	if(nullptr == root)
+	{
+		return;
+	}
+
+	cout << root->getData() << " ";
+	printElementsPreorder(root->getLeftChild());
+	printElementsPreorder(root->getRightChild());
+}
