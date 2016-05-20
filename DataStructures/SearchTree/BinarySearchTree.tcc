@@ -108,3 +108,23 @@ void BinarySearchTree<Type>::printElementsPreorder(TreeNode<Type>* root) const
 	printElementsPreorder(root->getLeftChild());
 	printElementsPreorder(root->getRightChild());
 }
+
+template <class Type>
+Type BinarySearchTree<Type>::findMin() const
+{
+	return findMin(m_root);
+}
+
+template <class Type>
+Type BinarySearchTree<Type>::findMin(TreeNode<Type>* node) const
+{
+	if(nullptr == node->getLeftChild())
+	{
+		return node->getData();
+	}
+	else
+	{
+		return findMin(node->getLeftChild());
+	}
+}
+

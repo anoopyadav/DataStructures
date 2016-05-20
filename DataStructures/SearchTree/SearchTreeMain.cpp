@@ -20,5 +20,8 @@ int SearchTreeMain()
 	cout << std::endl << "Elements LevelOrder:" << std::endl;
 	tree.printElementsLevelOrder();
 
+	cout << std::endl << "Minimum Element:" << std::endl;
+	cout << tree.findMin() << std::endl;
+
 	return 0;
 }
