@@ -128,3 +128,60 @@ Type BinarySearchTree<Type>::findMin(TreeNode<Type>* node) const
 	}
 }
 
+template <class Type>
+void BinarySearchTree<Type>::deleteElement(Type data)
+{
+	m_root = deleteElement(m_root, data);
+}
+
+/* Algorithm Description
+ * STEP1: Check if data is less than the root, recursive delete on the left child
+ * 		  Check if data is greater than the root, recursive delete on the right child
+ * 		  Check if it's the root, if so
+ * STEP2: If root has 1 child, then replace the root with that child
+ * STEP3: If root has 2 children, Find minimum element in the right subtree
+ * 		  Replace the root with the minimum, then recursive delete on the right subtree
+ */
+template <class Type>
+TreeNode<Type>* BinarySearchTree<Type>::deleteElement(TreeNode<Type>* root, Type data)
+{
+	if(nullptr == root)
+	{
+		return root;
+	}
+	else if(data < root->getData())
+	{
+		root->setLeftChild(deleteElement(root->getLeftChild(), data));
+	}
+	else if(data > root->getData())
+	{
+		root->setRightChild(deleteElement(root->getRightChild(), data));
+	}
+	else
+	{
+		if(nullptr == root->getLeftChild() && nullptr == root->getRightChild())
+		{
+			delete root;
+			root = nullptr;
+		}
+		else if(nullptr == root->getLeftChild())
+		{
+			TreeNode<Type>* nodeToBeDeleted = root;
+			root = root->getRightChild();
+			delete nodeToBeDeleted;
+		}
+		else if(nullptr == root->getRightChild())
+		{
+			TreeNode<Type>* nodeToBeDeleted = root;
+			root = root->getLeftChild();
+			delete nodeToBeDeleted;
+		}
+		else
+		{
+			Type minimum = findMin(root->getRightChild());
+			root->setData(minimum);
+			root->setRightChild(deleteElement(root->getRightChild(), minimum));
+		}
+	}
+	return root;
+}

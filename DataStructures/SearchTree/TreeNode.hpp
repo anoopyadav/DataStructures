@@ -14,6 +14,7 @@ public:
 	TreeNode<Type>* getLeftChild();
 	TreeNode<Type>* getRightChild();
 
+	void setData(Type data);
 	Type getData() const;
 
 private:

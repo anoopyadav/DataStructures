@@ -23,5 +23,9 @@ int SearchTreeMain()
 	cout << std::endl << "Minimum Element:" << std::endl;
 	cout << tree.findMin() << std::endl;
 
+	cout << std::endl << "Delete 2:" << std::endl;
+	tree.deleteElement(2);
+	tree.printElementsInOrder();
+
 	return 0;
 }

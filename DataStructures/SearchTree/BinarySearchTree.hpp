@@ -25,12 +25,15 @@ public:
 
 	Type findMin() const;
 
+	void deleteElement(Type data);
+
 private:
 	TreeNode<Type>* insert(TreeNode<Type>* root, Type item);
 	void printElementsInOrder(TreeNode<Type>* root) const;
 	void printElementsLevelOrder(TreeNode<Type>* root) const;
 	void printElementsPreorder(TreeNode<Type>* root) const;
 	Type findMin(TreeNode<Type>* node) const;
+	TreeNode<Type>* deleteElement(TreeNode<Type>* root, Type data);
 
 	TreeNode<Type>* m_root;
 };

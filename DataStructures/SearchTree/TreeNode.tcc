@@ -14,6 +14,12 @@ TreeNode<Type>::TreeNode()
 }
 
 template <class Type>
+TreeNode<Type>::~TreeNode()
+{
+
+}
+
+template <class Type>
 void TreeNode<Type>::setLeftChild(TreeNode<Type>* leftChild)
 {
 	m_left = leftChild;
@@ -23,6 +29,12 @@ template <class Type>
 void TreeNode<Type>::setRightChild(TreeNode<Type>* rightChild)
 {
 	m_right = rightChild;
+}
+
+template <class Type>
+void TreeNode<Type>::setData(Type data)
+{
+	m_data = data;
 }
 
 template <class Type>
