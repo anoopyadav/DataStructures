@@ -16,7 +16,8 @@ TreeNode<Type>::TreeNode()
 template <class Type>
 TreeNode<Type>::~TreeNode()
 {
-
+	delete m_left;
+	delete m_right;
 }
 
 template <class Type>

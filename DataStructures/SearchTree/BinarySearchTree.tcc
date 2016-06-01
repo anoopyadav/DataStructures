@@ -14,7 +14,7 @@ BinarySearchTree<Type>::BinarySearchTree()
 template <class Type>
 BinarySearchTree<Type>::~BinarySearchTree()
 {
-
+	delete m_root;
 }
 
 template <class Type>
