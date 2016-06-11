@@ -5,7 +5,7 @@
 int PriorityQueueMain()
 {
 	PriorityQueue<int> priorityQueue;
-	std::cout << "Size: " << priorityQueue.getSize() << std::endl;
+
 	priorityQueue.insert(40);
 	priorityQueue.insert(31);
 	priorityQueue.insert(28);
@@ -17,5 +17,14 @@ int PriorityQueueMain()
 	priorityQueue.insert(12);
 
 	priorityQueue.printQueue();
+
+	std::cout << "Queue Size: " << priorityQueue.getSize() << std::endl;
+	std::cout << "Queue Capacity: " << priorityQueue.getCapacity() << std::endl;
+
+	std::cout << "Get highest priority item: " << priorityQueue.remove() << std::endl;
+	std::cout << "Queue Size: " << priorityQueue.getSize() << std::endl;
+	std::cout << "Queue Capacity: " << priorityQueue.getCapacity() << std::endl;
+	priorityQueue.printQueue();
+
 	return 0;
 }

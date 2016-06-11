@@ -8,6 +8,7 @@ public:
 	~PriorityQueue();
 
 	int getSize() const;
+	int getCapacity() const;
 	bool isEmpty() const;
 	void insert(Type item);
 	Type remove();

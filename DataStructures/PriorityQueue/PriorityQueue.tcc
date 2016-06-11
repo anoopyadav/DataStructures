@@ -21,6 +21,12 @@ int PriorityQueue<Type>::getSize() const
 }
 
 template <class Type>
+int PriorityQueue<Type>::getCapacity() const
+{
+	return m_capacity;
+}
+
+template <class Type>
 bool PriorityQueue<Type>::isEmpty() const
 {
 	return 0 == m_size && nullptr == m_heap;
@@ -57,13 +63,42 @@ void PriorityQueue<Type>::insert(Type item)
 template <class Type>
 Type PriorityQueue<Type>::remove()
 {
-	return nullptr;
+	// Pop the root and obtain the tail
+	Type poppedItem = m_heap[0];
+	Type item = m_heap[--m_size];
+
+	int child = 0;
+	int parent = 0;
+
+	// Start at the root, find which child is greater
+	// Move that child up one level
+	// Stop when child is less than the item
+	while((2 * child) + 1 < m_size)
+	{
+		child = (2 * child) + 1;
+		if(child + 1 < m_size && m_heap[child + 1] > m_heap[child])
+		{
+			child++;
+		}
+		if(m_heap[child] > item)
+		{
+			m_heap[parent] = m_heap[child];
+			parent = child;
+		}
+		else
+		{
+			break;
+		}
+	}
+	m_heap[parent] = item;
+
+	return poppedItem;
 }
 
 template <class Type>
 void PriorityQueue<Type>::printQueue() const
 {
-	std::cout << "[";
+	std::cout << "[ ";
 	for(int i = 0; i < m_size; i++)
 	{
 		std::cout << m_heap[i] << " ";
