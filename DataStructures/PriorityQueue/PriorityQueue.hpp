@@ -12,8 +12,11 @@ public:
 	void insert(Type item);
 	Type remove();
 
+	void printQueue() const;
+
 private:
 	int m_size;
+	int m_capacity;
 	Type* m_heap;
 };
 
